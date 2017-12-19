@@ -293,11 +293,12 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
 - (void)done {
     [self setNSProgressDisplayLinkEnabled:NO];
-
     if (self.hasFinished) {
         self.alpha = 0.0f;
         if (self.removeFromSuperViewOnHide) {
-            [self removeFromSuperview];
+            if(self.superview != nil){
+                [self removeFromSuperview];
+            }
         }
     }
     MBProgressHUDCompletionBlock completionBlock = self.completionBlock;
